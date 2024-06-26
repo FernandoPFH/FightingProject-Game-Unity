@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3403553294100077779}
   - component: {fileID: 1711545417666641698}
   - component: {fileID: 1261670370962386835}
+  - component: {fileID: -876154762457310366}
   m_Layer: 0
   m_Name: BasicPower
   m_TagString: Untagged
@@ -122,3 +123,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   horizontalVelocity: 8
   lifeSpan: 3
+--- !u!114 &-876154762457310366
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4296329437679764373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f2c9cf37c0a35b4b918fdd278a293da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 15
