@@ -9,6 +9,7 @@ using UnityEngine.UI;
 public class PlayerHealth : MonoBehaviour
 {
     [SerializeField] private Image healthBar;
+    [SerializeField] private string oponent;
     private float _health = 100f;
     private float _maxHealth = 100f;
 
@@ -24,5 +25,8 @@ public class PlayerHealth : MonoBehaviour
         _health = Mathf.Clamp(_health - damage, 0, _maxHealth);
 
         UpdateHealthBar();
+
+        if (_health == 0)
+            GameController.instance.FinishFight(oponent);
     }
 }
