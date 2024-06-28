@@ -19,9 +19,12 @@ public class GameController : MonoBehaviour
     {
         instance = this;
     }
-    public void FinishFight(string winner)
+    public void FinishFight(string winner, bool draw = false)
     {
-        winText.text = $"{winner} Wins!!!";
+        if (!draw)
+            winText.text = $"{winner} Wins!!!";
+        else
+            winText.text = $"Draw!!!";
 
         director.playableAsset = winScreen;
         director.RebuildGraph();
