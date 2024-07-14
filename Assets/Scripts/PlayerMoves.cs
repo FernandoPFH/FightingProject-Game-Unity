@@ -24,6 +24,10 @@ public class PlayerMoves : MonoBehaviour
     [SerializeField] Animator _animator;
     [Header("Direction")]
     [SerializeField] bool _isRight = true;
+    [Header("Keys")]
+    [SerializeField] KeyCode _punchKey = KeyCode.N;
+    [SerializeField] KeyCode _kickKey = KeyCode.M;
+    [SerializeField] KeyCode _powerKey = KeyCode.H;
     float? _basicPowerCounter;
 
     // Update is called once per frame
@@ -36,7 +40,7 @@ public class PlayerMoves : MonoBehaviour
 
     void basicAttacks()
     {
-        if (Input.GetKeyDown(KeyCode.N) && punchTime == null && punchLastTime > punchDelay)
+        if (Input.GetKeyDown(_punchKey) && punchTime == null && punchLastTime > punchDelay)
         {
             punchLastTime = 0f;
             punchTime = 0f;
@@ -44,7 +48,7 @@ public class PlayerMoves : MonoBehaviour
             _animator.SetTrigger("Punch");
         }
 
-        if (Input.GetKeyDown(KeyCode.M) && kickLastTime > kickDelay)
+        if (Input.GetKeyDown(_kickKey) && kickLastTime > kickDelay)
         {
             kickLastTime = 0f;
             kickTime = 0f;
@@ -80,7 +84,7 @@ public class PlayerMoves : MonoBehaviour
 
     void powerAttacks()
     {
-        if (Input.GetKeyDown(KeyCode.H) && _basicPowerCounter == null)
+        if (Input.GetKeyDown(_powerKey) && _basicPowerCounter == null)
         {
             _basicPowerCounter = 0f;
             _animator.SetTrigger("Magic");

@@ -13,6 +13,10 @@ public class PlayerMoviment : MonoBehaviour
     [SerializeField] float verticalForce = 1f;
     [SerializeField] float groundCheckDistance = 1.3f;
     [SerializeField] LayerMask groundLayer;
+    [Header("Keys")]
+    [SerializeField] KeyCode _leftKey = KeyCode.A;
+    [SerializeField] KeyCode _rightKey = KeyCode.D;
+    [SerializeField] KeyCode _jumpKey = KeyCode.W;
 
     [Header("Debug")]
     [SerializeField] bool debug = false;
@@ -45,9 +49,9 @@ public class PlayerMoviment : MonoBehaviour
     {
         float horizontalMoviment = 0f;
 
-        if (Input.GetKey(KeyCode.D))
+        if (Input.GetKey(_rightKey))
             horizontalMoviment += horizontalVelocity;
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetKey(_leftKey))
             horizontalMoviment -= horizontalVelocity * backwardsDecay;
 
         _animator.SetInteger("Movement", Mathf.RoundToInt(horizontalMoviment));
@@ -59,7 +63,7 @@ public class PlayerMoviment : MonoBehaviour
     {
         float verticalMoviment = 0f;
 
-        if (Input.GetKeyDown(KeyCode.W) && _isGrounded)
+        if (Input.GetKeyDown(_jumpKey) && _isGrounded)
         {
             _animator.SetTrigger("Jump");
             verticalMoviment = verticalForce;

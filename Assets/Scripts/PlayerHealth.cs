@@ -10,16 +10,17 @@ public class PlayerHealth : MonoBehaviour
 {
     [SerializeField] private Image healthBar;
     [SerializeField] private Animator _animator;
+    [SerializeField] private KeyCode _defenseKey = KeyCode.A;
     public float health { get; private set; } = 100f;
     private float _maxHealth = 100f;
     private bool _isDefending = false;
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.A))
+        if (Input.GetKeyDown(_defenseKey))
             _isDefending = true;
 
-        if (Input.GetKeyUp(KeyCode.A))
+        if (Input.GetKeyUp(_defenseKey))
             _isDefending = false;
     }
 
