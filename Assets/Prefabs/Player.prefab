@@ -412,7 +412,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ffce42995eba1942b9c4ac6ac009eec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  horizontalVelocity: 4
+  horizontalVelocity: 20
   backwardsDecay: 0.5
   verticalForce: 5
   groundCheckDistance: 1.3

@@ -19,10 +19,12 @@ public class PlayerMoviment : MonoBehaviour
 
     bool _isGrounded = true;
     Animator _animator;
+    Rigidbody _rigidbody;
 
     void Start()
     {
         _animator = GetComponentInChildren<Animator>();
+        _rigidbody = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -34,9 +36,9 @@ public class PlayerMoviment : MonoBehaviour
 
         Vector3 moviment = Vector3.right * HorizontalMoviment();
 
-        transform.Translate(moviment * Time.deltaTime);
+        _rigidbody.MovePosition(transform.position + moviment * Time.deltaTime);
 
-        GetComponent<Rigidbody>().AddForce(Vector3.up * VerticalMoviment(), ForceMode.Impulse);
+        _rigidbody.AddForce(Vector3.up * VerticalMoviment(), ForceMode.Impulse);
     }
 
     float HorizontalMoviment()
