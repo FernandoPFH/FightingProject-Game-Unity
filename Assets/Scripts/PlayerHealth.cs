@@ -33,6 +33,9 @@ public class PlayerHealth : MonoBehaviour
 
     public void Hit(float damage)
     {
+        if (health == 0)
+            return;
+
         if (_isDefending)
         {
             _animator.SetTrigger("Block");

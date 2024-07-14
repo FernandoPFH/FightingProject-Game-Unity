@@ -88,7 +88,7 @@ public class PlayerMoves : MonoBehaviour
         {
             _basicPowerCounter = 0f;
             _animator.SetTrigger("Magic");
-            PowerBasicMovement power = Instantiate(basicPowerPrefab, transform.position + (_isRight ? Vector3.right : Vector3.left) * .6f + Vector3.up * .5f, Quaternion.identity).GetComponent<PowerBasicMovement>();
+            PowerBasicMovement power = Instantiate(basicPowerPrefab, transform.position + transform.right * .6f + transform.up * .5f, Quaternion.identity).GetComponent<PowerBasicMovement>();
             power.isRight = _isRight;
             power.gameObject.layer = gameObject.layer;
         }

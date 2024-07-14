@@ -38,11 +38,11 @@ public class PlayerMoviment : MonoBehaviour
 
         if (debug) Debug.DrawLine(transform.position, transform.position + transform.up * -1 * groundCheckDistance, Color.yellow);
 
-        Vector3 moviment = Vector3.right * HorizontalMoviment();
+        Vector3 moviment = transform.right * HorizontalMoviment();
 
         _rigidbody.MovePosition(transform.position + moviment * Time.deltaTime);
 
-        _rigidbody.AddForce(Vector3.up * VerticalMoviment(), ForceMode.Impulse);
+        _rigidbody.AddForce(transform.up * VerticalMoviment(), ForceMode.Impulse);
     }
 
     float HorizontalMoviment()

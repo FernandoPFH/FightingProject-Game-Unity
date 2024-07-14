@@ -11,7 +11,7 @@ public class PowerBasicMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate((isRight ? Vector3.right : Vector3.left) * horizontalVelocity * Time.deltaTime);
+        transform.Translate((isRight ? transform.forward : -transform.forward) * horizontalVelocity * Time.deltaTime);
 
         timeSinceStart += Time.deltaTime;
 

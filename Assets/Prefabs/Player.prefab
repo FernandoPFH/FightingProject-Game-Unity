@@ -177,6 +177,10 @@ MonoBehaviour:
     type: 3}
   basicPowerDelay: 1
   _animator: {fileID: 8432283761764185427}
+  _isRight: 1
+  _punchKey: 99
+  _kickKey: 118
+  _powerKey: 98
 --- !u!1 &2317123674691685595
 GameObject:
   m_ObjectHideFlags: 0
@@ -412,13 +416,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ffce42995eba1942b9c4ac6ac009eec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  horizontalVelocity: 20
+  horizontalVelocity: 15
   backwardsDecay: 0.5
   verticalForce: 5
   groundCheckDistance: 1.3
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
+  _leftKey: 97
+  _rightKey: 100
+  _jumpKey: 119
   debug: 0
 --- !u!136 &6333151404795304908
 CapsuleCollider:
@@ -468,7 +475,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 120
+  m_Constraints: 114
   m_CollisionDetection: 1
 --- !u!114 &-1917278903790820594
 MonoBehaviour:
@@ -484,6 +491,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthBar: {fileID: 0}
   _animator: {fileID: 8432283761764185427}
+  _defenseKey: 97
 --- !u!1 &6195532051199192917
 GameObject:
   m_ObjectHideFlags: 0
