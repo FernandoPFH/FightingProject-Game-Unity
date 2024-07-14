@@ -8,20 +8,20 @@ public class PlayerMoves : MonoBehaviour
 {
     [Header("Punch")]
     [SerializeField] GameObject punchHitbox;
+    [SerializeField] float punchDelay = 0.1f;
+    float? punchLastTime = 0.0f;
     float? punchTime;
     [Header("Kick")]
     [SerializeField] GameObject kickHitbox;
+    [SerializeField] float kickDelay = 0.1f;
+    float? kickLastTime = 0.0f;
     float? kickTime;
     [Header("Power")]
     [SerializeField] GameObject basicPowerPrefab;
     [SerializeField] float basicPowerDelay = 3f;
+    [Header("Animator")]
+    [SerializeField] Animator _animator;
     float? _basicPowerCounter;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
 
     // Update is called once per frame
     void Update()
@@ -33,17 +33,20 @@ public class PlayerMoves : MonoBehaviour
 
     void basicAttacks()
     {
-        if (Input.GetKeyDown(KeyCode.N) && punchTime == null)
+        if (Input.GetKeyDown(KeyCode.N) && punchTime == null && punchLastTime > punchDelay)
         {
+            punchLastTime = 0f;
             punchTime = 0f;
             punchHitbox.SetActive(true);
+            _animator.SetTrigger("Punch");
         }
 
-
-        if (Input.GetKeyDown(KeyCode.M) && kickTime == null)
+        if (Input.GetKeyDown(KeyCode.M) && kickLastTime > kickDelay)
         {
+            kickLastTime = 0f;
             kickTime = 0f;
             kickHitbox.SetActive(true);
+            _animator.SetTrigger("Kick");
         }
 
         if (punchTime != null)
@@ -67,6 +70,9 @@ public class PlayerMoves : MonoBehaviour
                 kickTime = null;
             }
         }
+
+        punchLastTime += Time.deltaTime;
+        kickLastTime += Time.deltaTime;
     }
 
     void powerAttacks()
@@ -74,7 +80,8 @@ public class PlayerMoves : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.H) && _basicPowerCounter == null)
         {
             _basicPowerCounter = 0f;
-            Instantiate(basicPowerPrefab, transform.position + Vector3.right * 1f, Quaternion.identity);
+            _animator.SetTrigger("Magic");
+            Instantiate(basicPowerPrefab, transform.position + Vector3.right * .6f + Vector3.up * .5f, Quaternion.identity);
         }
 
         if (_basicPowerCounter != null)
@@ -86,5 +93,12 @@ public class PlayerMoves : MonoBehaviour
                 _basicPowerCounter = null;
             }
         }
+    }
+
+    public void Disable()
+    {
+        this.enabled = false;
+        punchHitbox.SetActive(false);
+        kickHitbox.SetActive(false);
     }
 }

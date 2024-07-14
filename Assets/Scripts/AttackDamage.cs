@@ -10,7 +10,7 @@ public class AttackDamage : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.transform.parent.TryGetComponent<PlayerHealth>(out PlayerHealth playerHealth))
+        if (other.transform.TryGetComponent<PlayerHealth>(out PlayerHealth playerHealth))
         {
             playerHealth.Hit(damage);
         }

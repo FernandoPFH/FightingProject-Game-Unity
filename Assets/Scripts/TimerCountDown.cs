@@ -7,6 +7,13 @@ public class TimerCountDown : MonoBehaviour
     [SerializeField] private TextMeshProUGUI timerText;
     private Coroutine coroutine;
 
+    static public TimerCountDown instance;
+
+    void Awake()
+    {
+        instance = this;
+    }
+
     public void StartContDown()
     {
         coroutine = StartCoroutine(CountDown());
@@ -29,6 +36,6 @@ public class TimerCountDown : MonoBehaviour
 
         StopContDown();
 
-        GameController.instance.FinishFight("", true);
+        GameController.instance.FinishFight();
     }
 }

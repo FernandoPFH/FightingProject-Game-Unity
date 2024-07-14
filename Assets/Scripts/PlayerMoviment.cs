@@ -1,3 +1,6 @@
+using Unity.VisualScripting;
+using UnityEditor.Animations;
+using UnityEditor.UI;
 using UnityEngine;
 
 public class PlayerMoviment : MonoBehaviour
@@ -15,6 +18,12 @@ public class PlayerMoviment : MonoBehaviour
     [SerializeField] bool debug = false;
 
     bool _isGrounded = true;
+    Animator _animator;
+
+    void Start()
+    {
+        _animator = GetComponentInChildren<Animator>();
+    }
 
     // Update is called once per frame
     void Update()
@@ -39,6 +48,8 @@ public class PlayerMoviment : MonoBehaviour
         if (Input.GetKey(KeyCode.A))
             horizontalMoviment -= horizontalVelocity * backwardsDecay;
 
+        _animator.SetInteger("Movement", Mathf.RoundToInt(horizontalMoviment));
+
         return horizontalMoviment;
     }
 
@@ -47,8 +58,17 @@ public class PlayerMoviment : MonoBehaviour
         float verticalMoviment = 0f;
 
         if (Input.GetKeyDown(KeyCode.W) && _isGrounded)
+        {
+            _animator.SetTrigger("Jump");
             verticalMoviment = verticalForce;
+        }
 
         return verticalMoviment;
+    }
+
+    public void Disable()
+    {
+        _animator.SetInteger("Movement", 0);
+        this.enabled = false;
     }
 }
