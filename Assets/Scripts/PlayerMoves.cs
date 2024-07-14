@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using JetBrains.Annotations;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 
@@ -21,6 +22,8 @@ public class PlayerMoves : MonoBehaviour
     [SerializeField] float basicPowerDelay = 3f;
     [Header("Animator")]
     [SerializeField] Animator _animator;
+    [Header("Direction")]
+    [SerializeField] bool _isRight = true;
     float? _basicPowerCounter;
 
     // Update is called once per frame
@@ -81,7 +84,9 @@ public class PlayerMoves : MonoBehaviour
         {
             _basicPowerCounter = 0f;
             _animator.SetTrigger("Magic");
-            Instantiate(basicPowerPrefab, transform.position + Vector3.right * .6f + Vector3.up * .5f, Quaternion.identity);
+            PowerBasicMovement power = Instantiate(basicPowerPrefab, transform.position + (_isRight ? Vector3.right : Vector3.left) * .6f + Vector3.up * .5f, Quaternion.identity).GetComponent<PowerBasicMovement>();
+            power.isRight = _isRight;
+            power.gameObject.layer = gameObject.layer;
         }
 
         if (_basicPowerCounter != null)

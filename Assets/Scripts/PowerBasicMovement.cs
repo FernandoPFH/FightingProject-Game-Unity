@@ -6,10 +6,12 @@ public class PowerBasicMovement : MonoBehaviour
     [SerializeField] float lifeSpan = 3f;
     float timeSinceStart = 0f;
 
+    public bool isRight = true;
+
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector3.right * horizontalVelocity * Time.deltaTime);
+        transform.Translate((isRight ? Vector3.right : Vector3.left) * horizontalVelocity * Time.deltaTime);
 
         timeSinceStart += Time.deltaTime;
 
