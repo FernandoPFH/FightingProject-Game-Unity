@@ -11,7 +11,8 @@ public class PlayerHealth : MonoBehaviour
 {
     [SerializeField] private Image healthBar;
     [SerializeField] private Animator _animator;
-    [SerializeField] private VisualEffect _visualEffect;
+    [SerializeField] private VisualEffect _visualEffect_Blood;
+    [SerializeField] private VisualEffect _visualEffect_Block;
     [SerializeField] private KeyCode _defenseKey = KeyCode.A;
     public float health { get; private set; } = 100f;
     private float _maxHealth = 100f;
@@ -41,13 +42,14 @@ public class PlayerHealth : MonoBehaviour
         if (_isDefending)
         {
             _animator.SetTrigger("Block");
+            _visualEffect_Block.Play();
             return;
         }
 
         health = Mathf.Clamp(health - damage, 0, _maxHealth);
 
         _animator.SetTrigger("Hit");
-        _visualEffect.Play();
+        _visualEffect_Blood.Play();
 
         UpdateHealthBar();
 
