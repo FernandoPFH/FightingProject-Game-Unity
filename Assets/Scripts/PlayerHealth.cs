@@ -5,11 +5,13 @@ using System.Runtime.InteropServices;
 using NUnit.Framework.Constraints;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.VFX;
 
 public class PlayerHealth : MonoBehaviour
 {
     [SerializeField] private Image healthBar;
     [SerializeField] private Animator _animator;
+    [SerializeField] private VisualEffect _visualEffect;
     [SerializeField] private KeyCode _defenseKey = KeyCode.A;
     public float health { get; private set; } = 100f;
     private float _maxHealth = 100f;
@@ -45,6 +47,7 @@ public class PlayerHealth : MonoBehaviour
         health = Mathf.Clamp(health - damage, 0, _maxHealth);
 
         _animator.SetTrigger("Hit");
+        _visualEffect.Play();
 
         UpdateHealthBar();
 
