@@ -12,7 +12,9 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private Image healthBar;
     [SerializeField] private Animator _animator;
     [SerializeField] private VisualEffect _visualEffect_Blood;
+    [SerializeField] private AudioSource _audioSource_Hit;
     [SerializeField] private VisualEffect _visualEffect_Block;
+    [SerializeField] private AudioSource _audioSource_Block;
     [SerializeField] private KeyCode _defenseKey = KeyCode.A;
     public float health { get; private set; } = 100f;
     private float _maxHealth = 100f;
@@ -41,6 +43,7 @@ public class PlayerHealth : MonoBehaviour
 
         if (_isDefending)
         {
+            _audioSource_Block.Play();
             _animator.SetTrigger("Block");
             _visualEffect_Block.Play();
             return;
@@ -48,6 +51,7 @@ public class PlayerHealth : MonoBehaviour
 
         health = Mathf.Clamp(health - damage, 0, _maxHealth);
 
+        _audioSource_Hit.Play();
         _animator.SetTrigger("Hit");
         _visualEffect_Blood.Play();
 

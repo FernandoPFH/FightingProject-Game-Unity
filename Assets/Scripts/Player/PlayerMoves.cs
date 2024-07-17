@@ -10,16 +10,19 @@ public class PlayerMoves : MonoBehaviour
     [Header("Punch")]
     [SerializeField] GameObject punchHitbox;
     [SerializeField] float punchDelay = 0.1f;
+    [SerializeField] private AudioSource _audioSource_Punch;
     float? punchLastTime = 0.0f;
     float? punchTime;
     [Header("Kick")]
     [SerializeField] GameObject kickHitbox;
     [SerializeField] float kickDelay = 0.1f;
+    [SerializeField] private AudioSource _audioSource_Kick;
     float? kickLastTime = 0.0f;
     float? kickTime;
     [Header("Power")]
     [SerializeField] GameObject basicPowerPrefab;
     [SerializeField] float basicPowerDelay = 3f;
+    [SerializeField] private AudioSource _audioSource_Power;
     [Header("Animator")]
     [SerializeField] Animator _animator;
     [Header("Direction")]
@@ -46,6 +49,7 @@ public class PlayerMoves : MonoBehaviour
             punchTime = 0f;
             punchHitbox.SetActive(true);
             _animator.SetTrigger("Punch");
+            _audioSource_Punch.Play();
         }
 
         if (Input.GetKeyDown(_kickKey) && kickLastTime > kickDelay)
@@ -54,6 +58,7 @@ public class PlayerMoves : MonoBehaviour
             kickTime = 0f;
             kickHitbox.SetActive(true);
             _animator.SetTrigger("Kick");
+            _audioSource_Kick.Play();
         }
 
         if (punchTime != null)
@@ -88,6 +93,7 @@ public class PlayerMoves : MonoBehaviour
         {
             _basicPowerCounter = 0f;
             _animator.SetTrigger("Magic");
+            _audioSource_Power.Play();
             PowerBasicMovement power = Instantiate(basicPowerPrefab, transform.position + transform.right * .6f + transform.up * .5f, Quaternion.identity).GetComponent<PowerBasicMovement>();
             power.isRight = _isRight;
             power.gameObject.layer = gameObject.layer;
