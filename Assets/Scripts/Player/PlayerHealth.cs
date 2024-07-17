@@ -10,6 +10,7 @@ using UnityEngine.VFX;
 public class PlayerHealth : MonoBehaviour
 {
     [SerializeField] private Image healthBar;
+    [SerializeField] private Image damageBar;
     [SerializeField] private Animator _animator;
     [SerializeField] private VisualEffect _visualEffect_Blood;
     [SerializeField] private AudioSource _audioSource_Hit;
@@ -19,6 +20,11 @@ public class PlayerHealth : MonoBehaviour
     public float health { get; private set; } = 100f;
     private float _maxHealth = 100f;
     private bool _isDefending = false;
+    private float _fillMountLife = 1f;
+    private float _fillMountDamage = 1f;
+    private bool _drainDamage = false;
+    private float _targetFillMountLife = 1f;
+    private Coroutine _drainDamageCoroutine;
 
     void Update()
     {
@@ -27,13 +33,50 @@ public class PlayerHealth : MonoBehaviour
 
         if (Input.GetKeyUp(_defenseKey))
             _isDefending = false;
+
+        if (_fillMountLife < _targetFillMountLife)
+            _fillMountLife = _targetFillMountLife;
+        else if (_fillMountLife > _targetFillMountLife)
+            _fillMountLife -= 0.01f;
+
+        healthBar.fillAmount = _fillMountLife;
+
+        if (_drainDamage)
+        {
+            if (_fillMountDamage < _targetFillMountLife)
+                _fillMountDamage = _targetFillMountLife;
+            else if (_fillMountDamage > _targetFillMountLife)
+                _fillMountDamage -= 0.02f;
+
+            damageBar.fillAmount = _fillMountDamage;
+        }
+    }
+
+    IEnumerator HideDamage()
+    {
+        _drainDamage = false;
+
+        yield return new WaitForSeconds(1f);
+
+        _drainDamage = true;
     }
 
     void UpdateHealthBar()
     {
+        if (_drainDamageCoroutine != null)
+            StopCoroutine(_drainDamageCoroutine);
+
         float relativeHealth = health / _maxHealth;
 
-        healthBar.fillAmount = relativeHealth;
+        if (relativeHealth != 0)
+            _targetFillMountLife = relativeHealth;
+        else
+        {
+            healthBar.fillAmount = relativeHealth;
+            damageBar.fillAmount = relativeHealth;
+        }
+
+        _drainDamageCoroutine = StartCoroutine(HideDamage());
     }
 
     public void Hit(float damage)
