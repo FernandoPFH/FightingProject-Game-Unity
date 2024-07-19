@@ -1,6 +1,3 @@
-using Unity.VisualScripting;
-using UnityEditor.Animations;
-using UnityEditor.UI;
 using UnityEngine;
 
 public class PlayerMoviment : MonoBehaviour
