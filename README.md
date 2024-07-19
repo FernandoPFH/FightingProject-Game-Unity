@@ -1,6 +1,6 @@
 # FightingProject-Game-Unity
 
-![](/Imagens/MenuInicial.PNG)
+![](/Imagens/MenuInicial.png)
 Um Jogo De Luta.
 
 ## Link Para Teste
