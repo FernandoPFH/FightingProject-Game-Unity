@@ -368,14 +368,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 030f85c3f73729f4f976f66ffb23b875, type: 3}
   m_Name: AnimationPlayableAsset
   m_EditorClassIdentifier: 
-  m_Clip: {fileID: -203655887218126122, guid: 1a6ca99dc7df1af45858f00ff513de57, type: 3}
+  m_Clip: {fileID: -203655887218126122, guid: f8b91730977f8ca46947b0d19ecf837a, type: 3}
   m_Position: {x: 0, y: -1.12, z: 0}
   m_EulerAngles: {x: 0, y: 98.68, z: 0}
   m_UseTrackMatchFields: 1
   m_MatchTargetFields: 63
   m_RemoveStartOffset: 1
   m_ApplyFootIK: 0
-  m_Loop: 2
+  m_Loop: 0
   m_Version: 1
   m_Rotation: {x: 0, y: 0, z: 0, w: 1}
 --- !u!114 &-6143057848472623645
@@ -390,7 +390,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 030f85c3f73729f4f976f66ffb23b875, type: 3}
   m_Name: AnimationPlayableAsset
   m_EditorClassIdentifier: 
-  m_Clip: {fileID: -203655887218126122, guid: ce2ee8a572b03534a849b9fe7d198117, type: 3}
+  m_Clip: {fileID: -203655887218126122, guid: 1557a1025c460894990fbafc669d2b1c, type: 3}
   m_Position: {x: 0, y: -1.12, z: 0}
   m_EulerAngles: {x: 0, y: 98.68, z: 0}
   m_UseTrackMatchFields: 1
@@ -529,7 +529,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 030f85c3f73729f4f976f66ffb23b875, type: 3}
   m_Name: AnimationPlayableAsset
   m_EditorClassIdentifier: 
-  m_Clip: {fileID: -203655887218126122, guid: 913255bf1065d554596149ea7fdd87be, type: 3}
+  m_Clip: {fileID: -203655887218126122, guid: 1fa2309f92bfee5449278736ef015292, type: 3}
   m_Position: {x: 0, y: -1.12, z: 0}
   m_EulerAngles: {x: 0, y: 98.68, z: 0}
   m_UseTrackMatchFields: 1
@@ -668,7 +668,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 030f85c3f73729f4f976f66ffb23b875, type: 3}
   m_Name: AnimationPlayableAsset
   m_EditorClassIdentifier: 
-  m_Clip: {fileID: -203655887218126122, guid: d297b67f47166df45bfdf92bdd64539b, type: 3}
+  m_Clip: {fileID: -203655887218126122, guid: 0ea097b1f8ff31a429af0192adb97f3f, type: 3}
   m_Position: {x: 0, y: -1.12, z: 0}
   m_EulerAngles: {x: 0, y: 98.68, z: 0}
   m_UseTrackMatchFields: 1
