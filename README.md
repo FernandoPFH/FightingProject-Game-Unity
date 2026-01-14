@@ -3,10 +3,6 @@
 ![](/Imagens/MenuInicial.png)
 Um Jogo De Luta.
 
-## Link Para Teste
-
-[Clique Aqui](https://fernandopfh.github.io/FightingProject-Game-Unity/)
-
 ## Packages Usados:
 
 - [Futuristic soldier - Scifi character](https://assetstore.unity.com/packages/3d/characters/humanoids/sci-fi/futuristic-soldier-scifi-character-202085)
